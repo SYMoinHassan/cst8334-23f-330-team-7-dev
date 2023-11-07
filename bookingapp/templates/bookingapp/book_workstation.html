@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Schedule a Workstation</title>
+    <!-- Add a link to your stylesheet if it's not already included -->
+</head>
+{% include 'bookingapp/topnavbar.html' %}
+<body>
+    <div class="content">
+        <div class="card">
+           
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+
+            <div id="booking-content">
+                <div id="available-workstations">
+                    <h2>Available Workstations</h2>
+                    <ul>
+                        {% for workstation in available_workstations %}
+                            <li>Workstation {{ workstation.number }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <div id="bookingform">
+                    <h1>Book A Workstation</h1>
+                    <form method="post" action="{% url 'book_workstation' %}">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit">Book Workstation</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,12 @@
+{% extends 'bookingapp/base_generic.html' %}
+
+{% block content %}
+  <div class="form-container">
+    <h2>Create a new lab</h2>
+    <form method="post" class="lab-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="submit-button">Create</button>
+    </form>
+  </div>
+{% endblock %}

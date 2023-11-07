@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Bookings</title>
+</head>
+<body>
+    {% include 'bookingapp/topnavbar.html' %}
+    <h2>Booking Entries</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Workstation</th>
+                <th>Date</th>
+                <th>Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for booking in bookings %}
+            <tr>
+                <td>{{ booking.user }}</td>
+                <td>{{ booking.email }}</td>
+                <td>{{ booking.number }}</td>
+                <td>{{ booking.date }}</td>
+                <td>{{ booking.time }}</td>
+            </tr>
+            
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

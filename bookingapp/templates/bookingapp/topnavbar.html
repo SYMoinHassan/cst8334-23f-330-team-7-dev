@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lab Dashboard</title>
+  <link rel="stylesheet" href="{% static 'bookingapp/css/style.css' %}">
+</head>
+<body>
+  <div id="navbar">
+    <header>
+      <h1 id="page-title">Lab Dashboard</h1>
+      <nav>
+        <ul>
+                  <li class="menu-txt-link"><a href="#" id="menu-dashboard" class="menu-txt-link">Lab Dashboard</a></li>
+                  <li class="menu-txt-link"><a href="{% url 'available_workstations' %}" id="menu-equipment" class="menu-txt-link">Equipment</a></li>
+                  <li class="menu-txt-link"><a href="{% url 'user_list' %}" id="menu-users" class="menu-txt-link">Users</a></li>
+          
+              
+          
+          
+            {% if user.is_authenticated %}
+                  <li class="menu-txt-link"><a href="{% url 'logout' %}" class="menu-txt-link">Logout</a></li>
+                {% else %}
+                  <li class="menu-txt-link"><a href="{% url 'register' %}" class="menu-txt-link">Sign up</a></li>
+                  <li class="menu-txt-link"><a href="{% url 'login' %}" class="menu-txt-link">Login</a></li>
+            {% endif %}
+            {% if user.is_authenticated %}
+                  <li class="menu-login-msg">You are currently logged in as {{ user.username }}</li>
+              {% else %}
+                  <li class="menu-login-msg">You are not logged in</li>
+            {% endif %}
+          
+        </ul>
+      </nav>
+    </header>
+  
+   
+      <div class="topbar">
+        <button class="green-button" onClick="location.href='{% url 'index' %}'">Home</button>
+        <button class="green-button" id="btn-create-lab" onclick="location.href='{% url 'create_lab' %}'">Create Lab</button>
+        <button class="green-button" id="btn-join-lab">Join Lab</button>
+        <button class="green-button" id="btn-request-lab-invite">Request Lab Invite</button>
+        <button class="green-button" id="btn-accept-invitation">Accept Invitation</button>
+        <!-- <button class="green-button" id="btn-invitation-request">Invitation Request</button> -->
+        <button class="green-button" id="btn-equipment-access" onClick="location.href='{% url 'available_workstations' %}'">Equipment Access</button>
+        <button class="green-button" onClick="location.href='{% url 'book_workstation' %}'">Create a Booking</button>
+      </div>
+    
+      
+        <!-- <div class="calendar">
+          <table>
+              <caption>Calendar</caption>
+            </table>
+        </div> -->
+      
+  
+ 

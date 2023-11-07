@@ -1,0 +1,22 @@
+<!-- bookingapp/templates/bookingapp/available_workstations.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Available Workstations</title>
+</head>
+{% include 'bookingapp/topnavbar.html' %}
+<body>
+    <div class="content">
+        <div class="card">
+       
+            <h1>Available Workstations</h1>
+            <ul>
+                {% for workstation in workstations %}
+                    <li>Workstation {{ workstation.number }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+   
+</body>
+</html>
